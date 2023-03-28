@@ -1,3 +1,13 @@
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: login.php');
+	exit;
+}
+?>
+
 <!DOCTYPE html> 
 <htmI lang="en">
 <head> 
@@ -78,9 +88,27 @@
             </div> -->
             <br>
 
+            <form action="searchideas.php" method="post">
+                    Search <input type="text" name="search"><br>
+    
+                    Column: <select name="column">
+                    <option></option>
+                    <option value="title">Title</option>
+                    <option value="riskrating">Risk Rating</option>
+                    <option value="producttype">Product Type</option>
+                    <option value="instrument">Instrument</option>
+                    <option value="sector">Sector</option>
+                    <option value="region">Region</option>
+                    <option value="country">Country</option>
+                    <option value="currency">Currency</option>
+                    </select><br>
+                    <input type ="submit">    
+                </form>
+
             <div class="Investments">
                 <h1>New Ideas</h1>
                 <br>
+                
 
                 <?php
                              // Include config file

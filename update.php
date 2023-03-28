@@ -3,8 +3,8 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $producttype = $country = $potentialinvestment = "";
-$name_err = $productype_err = $country_err = $potentialinvestment_err = "";
+$name = $productname = $producttype = $instrument = $sector = $region = $country = $potentialinvestment = $tag = "";
+$name_err = $productname_err = $productype_err = $instrument_err = $sector_err = $region_err = $country_err = $potentialinvestment_err = $tag_err = "";
  
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -18,6 +18,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     } else{
         $name = $input_name;
     }
+
+    // Validate product name
+    $input_productname = trim($_POST["productname"]);
+    if(empty($input_productname)){
+        $productname_err = "Please enter an product name.";     
+    } else{
+        $productname = $input_productname;
+    }
     
     // Validate product type
     $input_producttype = trim($_POST["producttype"]);
@@ -25,6 +33,30 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $producttype_err = "Please enter an product type.";     
     } else{
         $producttype = $input_producttype;
+    }
+
+    // Validate instrument
+    $input_instrument = trim($_POST["instrument"]);
+    if(empty($input_instrument)){
+        $instrument_err = "Please enter an instrument.";     
+    } else{
+        $instrument = $input_instrument;
+    }
+
+    // Validate sector
+    $input_sector = trim($_POST["sector"]);
+    if(empty($input_sector)){
+        $sector_err = "Please enter an sector.";     
+    } else{
+        $sector = $input_sector;
+    }
+
+    // Validate region
+    $input_region = trim($_POST["region"]);
+    if(empty($input_region)){
+        $region_err = "Please enter the region.";     
+    } else{
+        $region = $input_region;
     }
     
     // Validate country
@@ -42,21 +74,34 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     } else{
         $potentialinvestment = $input_potentialinvestment;
     }
+
+    // Validate tag
+    $input_tag = trim($_POST["tag"]);
+    if(empty($input_tag)){
+        $tag_err = "Please enter the tag.";     
+    } else{
+        $tag = $input_tag;
+    }
     
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($producttype_err) && empty($country_err) && empty($potentialinvestment_err)){
+    if(empty($name_err) && empty($productname_err) && empty($producttype_err) && empty($instrument_err) && empty($sector_err) && empty($region_err) && empty($country_err) && empty($potentialinvestment_err) && empty($tag_err)){
         // Prepare an update statement
-        $sql = "UPDATE clients SET name=?, producttype=?, country=?, potentialinvestment=? WHERE id=?";
+        $sql = "UPDATE clients SET name=?, productname=?, producttype=?, instrument=?, sector=?, region=?, country=?, potentialinvestment=?, tag=? WHERE id=?";
  
         if($stmt = $mysqli->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("ssssi", $name, $producttype, $country, $potentialinvestment, $id);
+            $stmt->bind_param("sssssssssi", $name, $productname, $producttype, $instrument, $sector, $region, $country, $potentialinvestment, $tag, $id);
             
             // Set parameters
             $name = $name;
+            $productname = $productname;
             $producttype = $producttype;
+            $instrument = $instrument;
+            $sector = $sector;
+            $region = $region;
             $country = $country;
             $potentialinvestment = $potentialinvestment;
+            $tag = $tag;
             $id = $id;
             
             // Attempt to execute the prepared statement
@@ -101,9 +146,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     
                     // Retrieve individual field value
                     $name = $row["name"];
+                    $productname = $row["productname"];
                     $producttype = $row["producttype"];
+                    $instrument = $row["instrument"];
+                    $sector = $row["sector"];
+                    $region = $row["region"];
                     $country = $row["country"];
                     $potentialinvestment = $row["potentialinvestment"];
+                    $tag = $row["tag"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
@@ -155,9 +205,29 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="invalid-feedback"><?php echo $name_err;?></span>
                         </div>
                         <div class="form-group">
+                            <label>Product Name</label>
+                            <textarea name="productname" class="form-control <?php echo (!empty($productname_err)) ? 'is-invalid' : ''; ?>"><?php echo $productname; ?></textarea>
+                            <span class="invalid-feedback"><?php echo $productname_err;?></span>
+                        </div>
+                        <div class="form-group">
                             <label>Product Type</label>
                             <textarea name="producttype" class="form-control <?php echo (!empty($producttype_err)) ? 'is-invalid' : ''; ?>"><?php echo $producttype; ?></textarea>
                             <span class="invalid-feedback"><?php echo $producttype_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Instrument</label>
+                            <textarea name="instrument" class="form-control <?php echo (!empty($instrument_err)) ? 'is-invalid' : ''; ?>"><?php echo $instrument; ?></textarea>
+                            <span class="invalid-feedback"><?php echo $instrument_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Sector</label>
+                            <textarea name="sector" class="form-control <?php echo (!empty($sector_err)) ? 'is-invalid' : ''; ?>"><?php echo $sector; ?></textarea>
+                            <span class="invalid-feedback"><?php echo $sector_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Region</label>
+                            <textarea name="region" class="form-control <?php echo (!empty($region_err)) ? 'is-invalid' : ''; ?>"><?php echo $region; ?></textarea>
+                            <span class="invalid-feedback"><?php echo $region_err;?></span>
                         </div>
                         <div class="form-group">
                             <label>Country</label>
@@ -168,6 +238,11 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <label>Potential Investment</label>
                             <input type="text" name="potentialinvestment" class="form-control <?php echo (!empty($potentialinvestment_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $potentialinvestment; ?>">
                             <span class="invalid-feedback"><?php echo $potentialinvestment_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Tag</label>
+                            <textarea name="tag" class="form-control <?php echo (!empty($tag_err)) ? 'is-invalid' : ''; ?>"><?php echo $tag; ?></textarea>
+                            <span class="invalid-feedback"><?php echo $tag_err;?></span>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Update">
