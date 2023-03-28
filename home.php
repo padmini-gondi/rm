@@ -3,7 +3,7 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
+	header('Location: login.php');
 	exit;
 }
 ?>
@@ -23,8 +23,6 @@ if (!isset($_SESSION['loggedin'])) {
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 
-     
-    
     <style>
         .wrapper{
             width: 600px;
@@ -99,6 +97,8 @@ if (!isset($_SESSION['loggedin'])) {
 
         <section class="middle">
             <div class="header">
+                <br>
+                <br>
                 <h1>Welcome RM</h1>
             </div>
             <br>
@@ -109,19 +109,23 @@ if (!isset($_SESSION['loggedin'])) {
                     Column: <select name="column">
                     <option></option>
                     <option value="name">Name</option>
+                    <option value="productname">Product Name</option>
                     <option value="producttype">Product Type</option>
+                    <option value="producttype">Instrument</option>
+                    <option value="producttype">Sector</option>
+                    <option value="region">Region</option>
                     <option value="country">Country</option>
                     <option value="potentialinvestment"> Potential Investment</option>
+                    <option value="tag">Tag</option>
                     </select><br>
-                    <input type ="submit">
-                    </form>
+                    <input type ="submit">    
+                </form>
             </div> 
             <br>
             <div class="recent-transactions">
                 <div class="header">
                     <h2> <span class="material-symbols-sharp">people</span> Clients</h2>
                 </div>
-                
                 
                 <div class="wrapper">
                   <div class="container-fluid">
@@ -142,21 +146,29 @@ if (!isset($_SESSION['loggedin'])) {
                               echo '<table class="table table-bordered table-striped">';
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>ID</th>";
                                         echo "<th>Name</th>";
+                                        echo "<th>Product Name</th>";
                                         echo "<th>Product Type</th>";
+                                        echo "<th>Instrument</th>";
+                                        echo "<th>Sector</th>";
+                                        echo "<th>Region</th>";
                                         echo "<th>Country</th>";
                                         echo "<th>Potential Investment</th>";
+                                        echo "<th>Tag</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = $result->fetch_array()){
                                     echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['name'] . "</td>";
+                                        echo "<td>" . $row['productname'] . "</td>";
                                         echo "<td>" . $row['producttype'] . "</td>";
+                                        echo "<td>" . $row['instrument'] . "</td>";
+                                        echo "<td>" . $row['sector'] . "</td>";
+                                        echo "<td>" . $row['region'] . "</td>";
                                         echo "<td>" . $row['country'] . "</td>";
                                         echo "<td>" . $row['potentialinvestment'] . "</td>";
+                                        echo "<td>" . $row['tag'] . "</td>";
                                         echo "<td>";
                                             
                                             echo '<a href="update.php?id='. $row['id'] .'"><span class="material-symbols-sharp">edit</span></a>';
@@ -182,47 +194,6 @@ if (!isset($_SESSION['loggedin'])) {
                      </div>        
                  </div>
               </div>
-
-                <!-- <div class="Investments">
-                <p> 
-                   <ul style="list-style-type: circle">
-                      <li>Name: Client 1</li>
-                      <li>Product type: Investments</li>
-                      <li>Country: India</li>
-                      <li>Potential investment: $1000</li>
-                   </ul>
-                </p>
-                <br>
-
-                <p> 
-                    <ul style="list-style-type: circle">
-                       <li>Name: Client 2</li>
-                       <li>Product type: Services</li>
-                       <li>Country: UK</li>
-                       </li>
-                       <li>Potential investment: $1500</li>
-                    </ul>
-               </p>
-               <br>
-
-                <p> 
-                    <ul style="list-style-type: circle">
-                       <li>Name: Client 3</li>
-                       <li>Product type: Services</li>
-                       <li>Country: USA</li>
-                       <li>Potential investment: $500</li>
-                    </ul>
-                </p>
-                <br>
-                <p> 
-                    <ul style="list-style-type: circle">
-                       <li>Name: Client 4</li>
-                       <li>Product type: Investment & Services</li>
-                       <li>Country: USA</li>
-                       <li>Potential investment: $1500</li>
-                    </ul>
-                </p>
-             </div>   -->
         </section>
 
         
@@ -235,3 +206,59 @@ if (!isset($_SESSION['loggedin'])) {
 
 </body>
 </htmI>
+
+
+<style>
+
+  body{
+    padding: 0;
+    margin: 0;
+    background: var(--color-light);
+    font-family: poppins, sans-serif;
+    min-height: 100vh;
+    color: var(--color-dark);
+  }
+
+  table{
+    position: absolute;
+    left: 45%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    border-collapse: collapse;
+    width: 900px;
+    height: 300px;
+    border: 1px solid #bdc3c7;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
+  }
+
+  tr{
+    transition: all .2s ease-in;
+    cursor: pointer;
+  }
+
+  th,
+  td{
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #header{
+    background-color: rgb(109, 92, 151);
+    color: #fff;
+  }
+
+  h1{
+    position: absolute;
+    font-weight: 500;
+    text-align: left;
+    color: black;
+  }
+
+  tr:hover{
+    background-color: #f5f5f5;
+    transform: scale(1.02);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
+  }
+
+</style>
