@@ -63,11 +63,11 @@ if (!isset($_SESSION['loggedin'])) {
                 </a>
                 <a href="./idea.php">
                     <span class="material-symbols-sharp">emoji_objects</span>
-                    <h4>Ideas</h4>
+                    <h4>New Ideas</h4>
                 </a>
-                <a href="./ticket.html">
-                    <span class="material-symbols-sharp">mark_email_unread</span>
-                    <h4>Create a Ticket</h4>
+                <a href="./approvedideas.php">
+                    <span class="material-symbols-sharp">checklist</span>
+                    <h4>Approved Ideas</h4>
                 </a>
                 <a href="./logout.php">
                     <span class="material-symbols-sharp">logout</span>
@@ -107,6 +107,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<th>Title</th>";
                                         echo "<th>Product Type</th>";
                                         echo "<th>Description</th>";
+                                        echo "<th>Update</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -185,3 +186,55 @@ if (!isset($_SESSION['loggedin'])) {
     </main>
 </body>
 </htmI>
+
+<style>
+
+  body{
+     padding: 0;
+     margin: 0;
+     background: var(--color-light);
+     font-family: poppins, sans-serif;
+     min-height: 100vh;
+     color: var(--color-dark);
+    }
+
+  table{
+     position: absolute;
+     left: 45%;
+     top: 43%;
+     transform: translate(-50%, -50%);
+     border-collapse: collapse;
+     width: 58%;
+     height: 300px;
+     border: 1px solid #bdc3c7;
+     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
+     background-color: #f5f5f5;
+    
+    }
+
+  tr{
+     transition: all .2s ease-in;
+     cursor: pointer;
+   }
+
+  th{
+     background-color: #6d5c97;
+     color: #fff;
+     border-bottom: 1px solid #ddd;
+   }
+
+  th,
+  td{
+     padding: 12px;
+     text-align: left;
+     border-bottom: 1px solid #ddd;
+     border: 1px solid rgb(190, 190, 190);
+    }
+
+  tr:hover{
+     background-color: #fff;
+     transform: scale(1.02);
+     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
+   }
+
+</style>

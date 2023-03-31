@@ -27,9 +27,10 @@ if (!isset($_SESSION['loggedin'])) {
         .wrapper{
             width: 600px;
             margin: 0 auto;
+            background-color: #6d5c97;
         }
         table tr td:last-child{
-            width: 120px;
+            width: 100px;
         }
     </style>
     <script>
@@ -81,11 +82,11 @@ if (!isset($_SESSION['loggedin'])) {
                 </a>
                 <a href="./idea.php">
                     <span class="material-symbols-sharp">emoji_objects</span>
-                    <h4>Ideas</h4>
+                    <h4>New Ideas</h4>
                 </a>
-                <a href="./ticket.html">
-                    <span class="material-symbols-sharp">mark_email_unread</span>
-                    <h4>Create a Ticket</h4>
+                <a href="./approvedideas.php">
+                    <span class="material-symbols-sharp">checklist</span>
+                    <h4>Approved Ideas</h4>
                 </a>
                 <a href="./logout.php">
                     <span class="material-symbols-sharp">logout</span>
@@ -155,6 +156,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<th>Country</th>";
                                         echo "<th>Potential Investment</th>";
                                         echo "<th>Tag</th>";
+                                        echo "<th>Update</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -211,54 +213,50 @@ if (!isset($_SESSION['loggedin'])) {
 <style>
 
   body{
-    padding: 0;
-    margin: 0;
-    background: var(--color-light);
-    font-family: poppins, sans-serif;
-    min-height: 100vh;
-    color: var(--color-dark);
-  }
+     padding: 0;
+     margin: 0;
+     background: var(--color-light);
+     font-family: poppins, sans-serif;
+     min-height: 100vh;
+     color: var(--color-dark);
+    }
 
   table{
-    position: absolute;
-    left: 45%;
-    top: 60%;
-    transform: translate(-50%, -50%);
-    border-collapse: collapse;
-    width: 900px;
-    height: 300px;
-    border: 1px solid #bdc3c7;
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
-  }
+     position: absolute;
+     left: 45%;
+     top: 53%;
+     transform: translate(-50%, -50%);
+     border-collapse: collapse;
+     width: 60%;
+     height: 300px;
+     border: 1px solid #bdc3c7;
+     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
+     background-color: #f5f5f5;
+    }
 
   tr{
-    transition: all .2s ease-in;
-    cursor: pointer;
-  }
+     transition: all .2s ease-in;
+     cursor: pointer;
+   }
+
+  th{
+     background-color: #6d5c97;
+     color: #fff;
+     border-bottom: 1px solid #ddd;
+   }
 
   th,
   td{
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-
-  #header{
-    background-color: rgb(109, 92, 151);
-    color: #fff;
-  }
-
-  h1{
-    position: absolute;
-    font-weight: 500;
-    text-align: left;
-    color: black;
-  }
+     padding: 12px;
+     text-align: left;
+     border-bottom: 1px solid #ddd;
+     border: 1px solid rgb(190, 190, 190);
+    }
 
   tr:hover{
-    background-color: #f5f5f5;
-    transform: scale(1.02);
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
-  }
+     background-color: #fff;
+     transform: scale(1.02);
+     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
+   }
 
 </style>

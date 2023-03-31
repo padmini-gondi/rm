@@ -61,11 +61,11 @@ if (!isset($_SESSION['loggedin'])) {
                     <span class="material-symbols-sharp">shield</span>
                     <h4>Services</h4>
                 </a>
-                <a href="./idea.php"  class="active">
+                <a href="./idea.php">
                     <span class="material-symbols-sharp">emoji_objects</span>
-                    <h4>Ideas</h4>
+                    <h4>New Ideas</h4>
                 </a>
-                <a href="./approvedideas.php">
+                <a href="./approvedideas.php" class="active">
                     <span class="material-symbols-sharp">checklist</span>
                     <h4>Approved Ideas</h4>
                 </a>
@@ -88,10 +88,10 @@ if (!isset($_SESSION['loggedin'])) {
             </div> -->
             <br>
 
-            <form action="searchideas.php" method="post">
+            <form action="searchapprovedideas.php" method="post">
                     Search <input type="text" name="search"><br>
     
-                    Column: <select name="column">
+                    Column <select name="column" placeholder="select coloumn">
                     <option></option>
                     <option value="title">Title</option>
                     <option value="riskrating">Risk Rating</option>
@@ -106,18 +106,18 @@ if (!isset($_SESSION['loggedin'])) {
                 </form>
 
                 <br>
-            <div class="Investments">
 
-                <h3> <a href="./newidea.php">Add a New Idea</a></h3>
+            <div class="Investments">
+                <h1>Approved Ideas</h1>
                 <br>
-                <h1>New Ideas</h1>
-                <br>
+                
+
                 <?php
                              // Include config file
                              require_once "config.php";
                     
                              // Attempt select query execution
-                             $sql = "SELECT * FROM ideas";
+                             $sql = "SELECT * FROM approvedideas";
                              if($result = $mysqli->query($sql)){
                              if($result->num_rows > 0){
                               echo '<table class="table table-bordered table-striped">';
@@ -148,11 +148,9 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<td>" . $row['currency'] . "</td>";
                                         echo "<td>" . $row['content'] . "</td>";
                                         echo "<td>";
-                                            
-                                            echo '<a href="approveidea.php?id='. $row['id'] .'"><span class="material-symbols-sharp">check_circle</span></a>';
-                                            echo '<a href="denyidea.php?id='. $row['id'] .'"><span class="material-symbols-sharp">cancel</span></a>';
-                                            
+                                            echo '<a href="suggestidea.php?id='. $row['id'] .'"><span class="material-symbols-sharp">recommend</span></a>';
                                         echo "</td>";
+                                        
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            
@@ -291,7 +289,7 @@ if (!isset($_SESSION['loggedin'])) {
      top: 77%;
      transform: translate(-50%, -50%);
      border-collapse: collapse;
-     width: 58%;
+     width: 53%;
      height: 300px;
      border: 1px solid #bdc3c7;
      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
