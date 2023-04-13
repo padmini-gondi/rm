@@ -38,9 +38,10 @@ if (!isset($_SESSION['loggedin'])) {
             $('[data-toggle="tooltip"]').tooltip();   
         });
     </script>
-
+ <script src="notification.js"></script>
 </head>
 <body>
+<script src="notification.js"></script>
     <nav>
         <div class="container">
             <img src="./images/logo.png" class="logo">
@@ -50,8 +51,8 @@ if (!isset($_SESSION['loggedin'])) {
                     <img src="./images/profile.jpg">
                 </div> -->
                 <span class="material-symbols-sharp">person_filled</span>
-                <h5>Padmini Gondi</h5>
-                <!-- <p>Welcome back, <?=$_SESSION['email']?>!</p> -->
+                <!-- <h5>Padmini Gondi</h5> -->
+                <h5>Welcome back, <?=$_SESSION['name']?>!</h5>
                 <!-- <span class="material-symbols-sharp">expand_more</span> -->
             </div>
             <!-- <button id="menu-btn">
@@ -63,9 +64,9 @@ if (!isset($_SESSION['loggedin'])) {
 
     <main>
         <aside>
-            <button id="close-btn">
+            <!-- <button id="close-btn">
                 <span class="material-symbols-sharp">close</span>
-            </button>
+            </button> -->
 
             <div class="sidebar">
                 <a href="./home.php" class="active">

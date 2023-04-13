@@ -148,7 +148,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<td>" . $row['currency'] . "</td>";
                                         echo "<td>" . $row['content'] . "</td>";
                                         echo "<td>";
-                                            echo '<a href="suggestidea.php?id='. $row['id'] .'"><span class="material-symbols-sharp">recommend</span></a>';
+                                            echo '<a href="notification/index.php"><span class="material-symbols-sharp">recommend</span></a>';
                                         echo "</td>";
                                         
                                     echo "</tr>";
