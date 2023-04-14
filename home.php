@@ -21,8 +21,7 @@ if (!isset($_SESSION['loggedin'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
-
+    <link rel="stylesheet" href="home.css">
     <style>
         .wrapper{
             width: 600px;
@@ -30,15 +29,16 @@ if (!isset($_SESSION['loggedin'])) {
             background-color: #6d5c97;
         }
         table tr td:last-child{
-            width: 100px;
+            width: 70px;
         }
     </style>
+    
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();   
         });
     </script>
- <script src="notification.js"></script>
+<script src="notification.js"></script>
 </head>
 <body>
 <script src="notification.js"></script>
@@ -46,12 +46,11 @@ if (!isset($_SESSION['loggedin'])) {
         <div class="container">
             <img src="./images/logo.png" class="logo">
          <div class="profile-area">
-            <div class="profile">
-                <!-- <div class="profile-photo">
-                    <img src="./images/profile.jpg">
-                </div> -->
+                <div class="profile">
+                    <!-- <div class="profile-photo">
+                        <img src="./images/profile.jpg">
+                    </div> -->
                 <span class="material-symbols-sharp">person_filled</span>
-                <!-- <h5>Padmini Gondi</h5> -->
                 <h5>Welcome back, <?=$_SESSION['name']?>!</h5>
                 <!-- <span class="material-symbols-sharp">expand_more</span> -->
             </div>
@@ -105,10 +104,11 @@ if (!isset($_SESSION['loggedin'])) {
             </div>
             <br>
             <div class="search">
-                <form action="search.php" method="post">
-                    Search <input type="text" name="search"><br>
+                <form class="form-inline" action="search1.php" method="post">
+                    <h4>Search: </h4><input type="text" name="search" placeholder ="Enter here..." required><br>
     
-                    Column: <select name="column">
+                    <h4> Column: </h4> 
+                    <select id="coloum" name="column" autofocus required>
                     <option></option>
                     <option value="name">Name</option>
                     <option value="productname">Product Name</option>
@@ -120,7 +120,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <option value="potentialinvestment"> Potential Investment</option>
                     <option value="tag">Tag</option>
                     </select><br>
-                    <input type ="submit">    
+                    <input type ="submit" value="Search">
                 </form>
             </div> 
             <br>
@@ -213,51 +213,95 @@ if (!isset($_SESSION['loggedin'])) {
 
 <style>
 
-  body{
-     padding: 0;
-     margin: 0;
-     background: var(--color-light);
-     font-family: poppins, sans-serif;
-     min-height: 100vh;
-     color: var(--color-dark);
-    }
-
-  table{
-     position: absolute;
-     left: 45%;
-     top: 53%;
-     transform: translate(-50%, -50%);
-     border-collapse: collapse;
-     width: 60%;
-     height: 300px;
-     border: 1px solid #bdc3c7;
-     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
-     background-color: #f5f5f5;
-    }
-
-  tr{
-     transition: all .2s ease-in;
-     cursor: pointer;
+body{
+    padding: 0;
+    margin: 0;
+    background: var(--color-light);
+    font-family: poppins, sans-serif;
+    min-height: 100vh;
+    color: var(--color-dark);
    }
 
-  th{
-     background-color: #6d5c97;
-     color: #fff;
-     border-bottom: 1px solid #ddd;
+ table{
+    position: absolute;
+    left: 45%;
+    top: 51%;
+    transform: translate(-50%, -50%);
+    border-collapse: collapse;
+    width: 60%;
+    height: 300px;
+    border: 1px solid #bdc3c7;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
+    background-color: #f5f5f5;
    }
 
-  th,
-  td{
-     padding: 12px;
-     text-align: left;
-     border-bottom: 1px solid #ddd;
-     border: 1px solid rgb(190, 190, 190);
-    }
+ tr{
+    transition: all .2s ease-in;
+    cursor: pointer;
+  }
 
-  tr:hover{
-     background-color: #fff;
-     transform: scale(1.02);
-     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
+ th{
+    background-color: #6d5c97;
+    color: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+
+ th,
+ td{
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border: 1px solid rgb(190, 190, 190);
    }
 
+ tr:hover{
+    background-color: #fff;
+    transform: scale(1.02);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
+  }
+
+  input[type=text] {
+  width: 20%;
+  height: 10px;
+  padding: 15px 5px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 4px;   
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+ }
+ select {
+  width: 20%;
+  height: 36px;
+  margin: 4px 0;
+  padding: 0px 5px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff; 
+ }  
+ input[type=submit] {
+  background-color: #45a049;
+  color: white;
+  margin: 4px 0;
+  padding: 9px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+ } 
+
+ input[type=submit]:hover {
+  background-color: #4CAF50;
+ }
+
+ .form-inline {  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+ }
+ .form-inline input, select {
+  margin: 5px 10px 5px 5px;
+ }
 </style>

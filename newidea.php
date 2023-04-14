@@ -132,6 +132,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             width: 600px;
             margin: 0 auto;
         }
+        input[type=submit] {
+          background-color: #45a049;
+          color: white;
+          margin: 4px 0;
+          padding: 7px 12px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        } 
+
+        input[type=submit]:hover {
+         background-color: #4CAF50;
+       }
     </style>
 </head>
 <body>

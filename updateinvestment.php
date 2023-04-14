@@ -182,13 +182,26 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update Record</title>
+    <title>Update Investment</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .wrapper{
             width: 600px;
             margin: 0 auto;
         }
+        input[type=submit] {
+          background-color: #45a049;
+          color: white;
+          margin: 4px 0;
+          padding: 7px 12px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        } 
+
+        input[type=submit]:hover {
+         background-color: #4CAF50;
+       }
     </style>
 </head>
 <body>

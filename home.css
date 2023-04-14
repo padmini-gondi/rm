@@ -80,14 +80,14 @@ p {
     color: var(--color-gray-dark);
 }
     
-/* small {
+small {
     font-weight: 300; 
     font-size: 0.77rem;
 }
 
 .text-muted {
     color: var(--color-gray-light);
-} */
+}
 
 .primary {
     color: var(--color-primary);
@@ -234,11 +234,11 @@ main aside .sidebar a.active:before {
     width: 6px;
     height: 100%;
     position: absolute;
-    background: #6d5c97;;
+    background: #6d5c97;
 }
 
 main aside .sidebar a:hover {
-    color: #6d5c97;;
+    color: #6d5c97;
 }
     
 main aside .sidebar a:hover span {
@@ -255,14 +255,21 @@ main section.middle .header {
     gap: 1rem;
 }
 
-main section.middle .header input [type="date"] {
+main section.middle .header .search input [type="text"] {
     padding: 0.5rem 2rem;
-    border-radius: var(--border-radius-2);
-    background: var(--color-white);
-    color: var(--color-gray-dark);
+    border-radius: 10px;
+    background: #ff796f;
+    color: #ff796f;
+}
+
+main section.middle .header .search input [type="submit"] {
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    background: #ff796f;
+    color: #ff796f;
 }
     
-/* main section.middle .cards {
+main section.middle .cards {
     margin-top: 1rem; 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -274,97 +281,14 @@ main section.middle .cards .card {
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
     color: white;
-    height: 22rem; 
+    height: 16rem; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 2rem 3rem var(--color-danger-light);
     transition: all 300ms ease;
-    min-width: 25rem;
+    min-width: 22rem;
 }
-
-main section.middle .cards .card:nth-child(2) {
-    background: linear-gradient(#7f8191, #27282f);
-    box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
-}
-
-main section.middle .cards .card:nth-child(3) {
-    background: linear-gradient(#5d70ff, #5719c2); 
-    box-shadow: 0 2rem 3rem var(--color-primary-light);
-}
-
-main section.middle .cards .card:hover {
-    box-shadow: none
-}
-
-main section.middle .card .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}    
-
-main section.middle .card .top .left {
-    display: flex;
-    gap: 0.5rem;
-}
-
-main section.middle .card .top .left h2 {
-    font-weight: 200; 
-    font-size: 1.4rem;
-}
-
-main section.middle .card .top .left img {
-    width: 2.3rem;
-    height: 2.3rem;
-    border: 1px solid white;
-    border-radius: var(--border-radius-2);
-    padding: 0.4rem;
-}
-
-main section.middle .card .top img.right {
-    width: 3.5rem;
-}
-
-main section.middle .card .middle {
-    display: flex;
-    justify-content: space-between;
-}
-    
-main section.middle .card .middle .chip {
-    width: 3.5rem;
-}
-
-main section.middle .card .bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
- 
-main section.middle .card .bottom .right {
-    display: flex;
-    gap: 2rem;
-}
-
-main .monthly-report {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    justify-content: space-between;
-    margin-top: 2rem;
-}
-
-main .monthly-report h1 {
-    font-weight: 700;
-    font-size: 1.8rem;
-}
-
-canvas#chart {
-    background: var(--color-white);
-    max-width: 100%;
-    margin-top: 2rem;
-    border-radius: var(--card-border-radius);
-    padding: var(--card-padding);
-} */
 
 main section.right .investments {
     background: var(--color-white);
@@ -386,7 +310,7 @@ main section.right .investments .header {
 main section.right .investments .header a {
     display: flex;
     align-items: center;
-    color: var(--color-primary);
+    color: #6d5c97;
 }
 
 main section.right .investments .investment {
@@ -406,64 +330,3 @@ main section.right .investments .investment:hover {
     background: var(--color-light);
     cursor: pointer;
 }
-
-/* main .recent-transactions {
-    margin-top: 2rem;
-}
-
-main .recent-transactions img {
-    width: 2.2rem;
-}
-
-main .recent-transactions .header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-
-main .recent-transactions .header a {
-    display: flex;
-    align-items: center;
-    color: var(--color-primary);
-}
-
-main .recent-transactions .transaction {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem var(--card-padding);
-    border-radius: var(--card-border-radius);
-    transition: all 300ms ease;
-}
-
-main .recent-transactions .transaction:hover {
-    background: var(--color-white);
-    cursor: pointer;
-}
-
-main .recent-transactions .transaction .service {
-    display: flex;
-    gap: 1rem;
-}
-
-main .recent-transactions .transaction .service .icon {
-    padding: var(--padding-2);
-    border-radius: var(--border-radius-1);
-    display: flex;
-    align-items: center;
-}
-
-main .recent-transactions .card-details {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-main .recent-transactions .card-details .card {
-    display: flex;
-    width: 4.6rem;
-    height: 3rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--border-radius-2);
-} */

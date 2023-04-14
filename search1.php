@@ -128,34 +128,36 @@ if (!isset($_SESSION['loggedin'])) {
                              $column = $_POST['column'];
                     
                              // Attempt select query execution
-                             $sql = "select * from ideas where $column like '%$search%'";
+                             $sql = "select * from clients where $column like '%$search%'";
                             //  execute sql and store result
                              if($result = $mysqli->query($sql)){
                              if($result->num_rows > 0){
                               echo '<table class="table table-bordered table-striped">';
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>Title</th>";
-                                        echo "<th>Risk Rating</th>";
+                                        echo "<th>Name</th>";
+                                        echo "<th>Product Name</th>";
                                         echo "<th>Product Type</th>";
                                         echo "<th>Instrument</th>";
                                         echo "<th>Sector</th>";
                                         echo "<th>Region</th>";
                                         echo "<th>Country</th>";
-                                        echo "<th>Currency</th>";
+                                        echo "<th>Potential Investment</th>";
+                                        echo "<th>Tag</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
-                                while($row = $result->fetch_assoc()){
+                                while($row = $result->fetch_array()){
                                     echo "<tr>";
-                                        echo "<td>" . $row['title'] . "</td>";
-                                        echo "<td>" . $row['riskrating'] . "</td>";
+                                        echo "<td>" . $row['name'] . "</td>";
+                                        echo "<td>" . $row['productname'] . "</td>";
                                         echo "<td>" . $row['producttype'] . "</td>";
                                         echo "<td>" . $row['instrument'] . "</td>";
                                         echo "<td>" . $row['sector'] . "</td>";
                                         echo "<td>" . $row['region'] . "</td>";
                                         echo "<td>" . $row['country'] . "</td>";
-                                        echo "<td>" . $row['currency'] . "</td>";
+                                        echo "<td>" . $row['potentialinvestment'] . "</td>";
+                                        echo "<td>" . $row['tag'] . "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            

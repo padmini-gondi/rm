@@ -202,13 +202,26 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update Record</title>
+    <title>Approve Idea</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .wrapper{
             width: 600px;
             margin: 0 auto;
         }
+        input[type=submit] {
+          background-color: #45a049;
+          color: white;
+          margin: 4px 0;
+          padding: 7px 12px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        } 
+
+        input[type=submit]:hover {
+         background-color: #4CAF50;
+       }
     </style>
 </head>
 <body>
@@ -216,7 +229,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5">Approve Ideas</h2>
+                    <h2 class="mt-5">Approve Idea</h2>
                     <p>Please edit the input values and submit to approve the idea.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                         <div class="form-group">

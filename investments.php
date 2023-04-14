@@ -11,6 +11,7 @@ if (!isset($_SESSION['loggedin'])) {
 <htmI lang="en">
 <head> 
     <meta charset= "UTF-8">
+    <title>Investments</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
@@ -19,7 +20,7 @@ if (!isset($_SESSION['loggedin'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
     <nav>
@@ -31,7 +32,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <img src="./images/profile.jpg">
                 </div> -->
                 <span class="material-symbols-sharp">person_filled</span>
-                <h5>Padmini Gondi</h5>
+                <h5>Welcome back, <?=$_SESSION['name']?>!</h5>
                 <!-- <span class="material-symbols-sharp">expand_more</span> -->
             </div>
             <!-- <button id="menu-btn">
@@ -233,7 +234,7 @@ if (!isset($_SESSION['loggedin'])) {
   table{
      position: absolute;
      left: 45%;
-     top: 57%;
+     top: 59%;
      transform: translate(-50%, -50%);
      border-collapse: collapse;
      width: 55%;

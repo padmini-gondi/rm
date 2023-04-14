@@ -12,6 +12,7 @@ if (!isset($_SESSION['loggedin'])) {
 <htmI lang="en">
 <head> 
     <meta charset= "UTF-8">
+    <title>Approved Ideas</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
@@ -20,7 +21,7 @@ if (!isset($_SESSION['loggedin'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
     <nav>
@@ -88,10 +89,11 @@ if (!isset($_SESSION['loggedin'])) {
             </div> -->
             <br>
 
-            <form action="searchapprovedideas.php" method="post">
-                    Search <input type="text" name="search"><br>
+            <form class="form-inline" action="searchapprovedideas.php" method="post">
+                    <h4>Search: </h4><input type="text" name="search" placeholder ="Enter here..." required><br>
     
-                    Column <select name="column" placeholder="select coloumn">
+                    <h4> Column: </h4> 
+                    <select id="coloum" name="column" autofocus required>
                     <option></option>
                     <option value="title">Title</option>
                     <option value="riskrating">Risk Rating</option>
@@ -321,5 +323,49 @@ if (!isset($_SESSION['loggedin'])) {
      transform: scale(1.02);
      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
    }
+   input[type=text] {
+  width: 20%;
+  height: 10px;
+  padding: 15px 5px;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 4px;   
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+ }
+ select {
+  width: 20%;
+  height: 36px;
+  margin: 4px 0;
+  padding: 0px 5px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff; 
+ }  
+ input[type=submit] {
+  background-color: #45a049;
+  color: white;
+  margin: 4px 0;
+  padding: 9px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+ } 
+
+ input[type=submit]:hover {
+  background-color: #4CAF50;
+ }
+
+ .form-inline {  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+ }
+ .form-inline input, select {
+  margin: 5px 10px 5px 5px;
+ }
 
 </style>

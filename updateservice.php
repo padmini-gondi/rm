@@ -54,6 +54,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Records updated successfully. Redirect to landing page
+                // echo "The service with id $id has been updated.<br />";
+                // echo '<a href="services.php"><h4>Go to Services</h4></a>';
                 header("location: services.php");
                 exit();
             } else{
@@ -123,13 +125,26 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update Record</title>
+    <title>Update Service</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .wrapper{
             width: 600px;
             margin: 0 auto;
         }
+        input[type=submit] {
+          background-color: #45a049;
+          color: white;
+          margin: 4px 0;
+          padding: 7px 12px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        } 
+
+        input[type=submit]:hover {
+         background-color: #4CAF50;
+       }
     </style>
 </head>
 <body>
