@@ -26,7 +26,7 @@
    <form method="post" action="">
     <div class="form-group">
      <label>Enter Title</label>
-     <input type="text" name="subject" id="subject" class="form-control">
+     <input type="text" name="subject" id="subject" class="form-control" autofocus required>
     </div>
     <div class="form-group">
      <input type="submit" name="post" id="post" class="btn btn-info" value="Search" />
