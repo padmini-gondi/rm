@@ -49,6 +49,11 @@ if ($stmt = $con->prepare('SELECT id, name, password FROM users WHERE email = ?'
             //  }else{
             //     header('Location: login.php'); 
             //  }
+
+            include ('push.php');
+	        $push = new Push();
+	        $user = $push->loginUsers($_POST['email'], $_POST['password']);
+
             header('Location: home.php');
         }else {
             // Incorrect password

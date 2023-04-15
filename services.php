@@ -104,7 +104,6 @@ if (!isset($_SESSION['loggedin'])) {
                               echo '<table class="table table-bordered table-striped">';
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>ID</th>";
                                         echo "<th>Title</th>";
                                         echo "<th>Product Type</th>";
                                         echo "<th>Description</th>";
@@ -114,7 +113,6 @@ if (!isset($_SESSION['loggedin'])) {
                                 echo "<tbody>";
                                 while($row = $result->fetch_array()){
                                     echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['name'] . "</td>";
                                         echo "<td>" . $row['producttype'] . "</td>";
                                         echo "<td>" . $row['contents'] . "</td>";

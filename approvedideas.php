@@ -33,7 +33,7 @@ if (!isset($_SESSION['loggedin'])) {
                     <img src="./images/profile.jpg">
                 </div> -->
                 <span class="material-symbols-sharp">person_filled</span>
-                <h5>Padmini Gondi</h5>
+                <h5>Welcome back, <?=$_SESSION['name']?>!</h5>
                 <!-- <span class="material-symbols-sharp">expand_more</span> -->
             </div>
             <!-- <button id="menu-btn">

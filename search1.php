@@ -89,29 +89,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <br>
                 <h1>Welcome RM</h1>
             </div>
-            <br>
-            <!-- <div class="search">
-                <form class="form-inline" action="search.php" method="post">
-                    <h4>Search: </h4><input type="text" name="search" placeholder ="Enter here..." required><br>
-    
-                    <h4> Column: </h4> 
-                    <select id="coloum" name="column" autofocus required>
-                    <option></option>
-                    <option value="name">Name</option>
-                    <option value="productname">Product Name</option>
-                    <option value="producttype">Product Type</option>
-                    <option value="producttype">Instrument</option>
-                    <option value="producttype">Sector</option>
-                    <option value="region">Region</option>
-                    <option value="country">Country</option>
-                    <option value="potentialinvestment"> Potential Investment</option>
-                    <option value="tag">Tag</option>
-                    </select><br>
-                    <input type ="submit">    
-                </form>
-            </div>  -->
-            <br>
-            <div class="recent-transactions">
+            <br><div class="recent-transactions">
                 <div class="header">
                     <h2> <span class="material-symbols-sharp">person_search</span> Searched Results</h2>
                 </div>
@@ -144,6 +122,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<th>Country</th>";
                                         echo "<th>Potential Investment</th>";
                                         echo "<th>Tag</th>";
+                                        echo "<th>Update</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -158,6 +137,11 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<td>" . $row['country'] . "</td>";
                                         echo "<td>" . $row['potentialinvestment'] . "</td>";
                                         echo "<td>" . $row['tag'] . "</td>";
+                                        echo "<td>";
+                                            
+                                            echo '<a href="update.php?id='. $row['id'] .'"><span class="material-symbols-sharp">edit</span></a>';
+                                            
+                                        echo "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            

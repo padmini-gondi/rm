@@ -91,7 +91,6 @@ if (!isset($_SESSION['loggedin'])) {
              </button>
             </div> -->
              <br>
-
              <form class="form-inline" action="searchideas.php" method="post">
                     <h4>Search: </h4><input type="text" name="search" placeholder ="Enter here..." required><br>
     

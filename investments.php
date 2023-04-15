@@ -234,7 +234,7 @@ if (!isset($_SESSION['loggedin'])) {
   table{
      position: absolute;
      left: 45%;
-     top: 59%;
+     top: 60%;
      transform: translate(-50%, -50%);
      border-collapse: collapse;
      width: 55%;
