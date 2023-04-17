@@ -10,7 +10,7 @@ if (!isset($_SESSION['loggedin'])) {
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $riskrating = $producttype = $instrument = $sector = $region = $country = $currency = $content = "";
+$name = $producttype = $content = "";
 $name_err = $riskrating_err = $producttype_err = $instrument_err = $sector_err = $region_err = $country_err = $currency_err = $content_err = "";
  
 // Processing form data when form is submitted
@@ -225,39 +225,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="invalid-feedback"><?php echo $name_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Risk Rating</label>
-                            <textarea name="riskrating" class="form-control <?php echo (!empty($riskrating_err)) ? 'is-invalid' : ''; ?>"><?php echo $riskrating; ?></textarea>
-                            <span class="invalid-feedback"><?php echo $riskrating_err;?></span>
-                        </div>
-                        <div class="form-group">
                             <label>Product Type</label>
                             <textarea name="producttype" class="form-control <?php echo (!empty($producttype_err)) ? 'is-invalid' : ''; ?>"><?php echo $producttype; ?></textarea>
                             <span class="invalid-feedback"><?php echo $producttype_err;?></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Instrument</label>
-                            <textarea name="instrument" class="form-control <?php echo (!empty($instrument_err)) ? 'is-invalid' : ''; ?>"><?php echo $instrument; ?></textarea>
-                            <span class="invalid-feedback"><?php echo $instrument_err;?></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Sector</label>
-                            <textarea name="sector" class="form-control <?php echo (!empty($sector_err)) ? 'is-invalid' : ''; ?>"><?php echo $sector; ?></textarea>
-                            <span class="invalid-feedback"><?php echo $sector_err;?></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Region</label>
-                            <textarea name="region" class="form-control <?php echo (!empty($region_err)) ? 'is-invalid' : ''; ?>"><?php echo $region; ?></textarea>
-                            <span class="invalid-feedback"><?php echo $region_err;?></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Country</label>
-                            <input type="text" name="country" class="form-control <?php echo (!empty($country_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $country; ?>">
-                            <span class="invalid-feedback"><?php echo $country_err;?></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Currency</label>
-                            <input type="text" name="currency" class="form-control <?php echo (!empty($currency_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $currency; ?>">
-                            <span class="invalid-feedback"><?php echo $currency_err;?></span>
                         </div>
                         <div class="form-group">
                             <label>Description</label>

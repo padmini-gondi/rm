@@ -38,10 +38,8 @@ if (!isset($_SESSION['loggedin'])) {
             $('[data-toggle="tooltip"]').tooltip();   
         });
     </script>
-<script src="notification.js"></script>
 </head>
 <body>
-<script src="notification.js"></script>
     <nav>
         <div class="container">
             <img src="./images/logo.png" class="logo">
@@ -117,7 +115,8 @@ if (!isset($_SESSION['loggedin'])) {
                     <option value="producttype">Sector</option>
                     <option value="region">Region</option>
                     <option value="country">Country</option>
-                    <option value="potentialinvestment"> Potential Investment</option>
+                    <option value="potentialinvestment">Potential Investment</option>
+                    <option value="potentialinvestment">Investment Preference</option>
                     <option value="tag">Tag</option>
                     </select><br>
                     <input type ="submit" value="Search">
@@ -128,8 +127,9 @@ if (!isset($_SESSION['loggedin'])) {
                 <div class="header">
                     <h2> <span class="material-symbols-sharp">people</span> Clients</h2>
                 </div>
-                
-                <div class="wrapper">
+          </div>  
+          <br>  
+                <div class="Investments">
                   <div class="container-fluid">
                      <div class="row">
                          <div class="col-md-12">
@@ -156,6 +156,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<th>Region</th>";
                                         echo "<th>Country</th>";
                                         echo "<th>Potential Investment</th>";
+                                        echo "<th>Investment Preference</th>";
                                         echo "<th>Tag</th>";
                                         echo "<th>Update</th>";
                                     echo "</tr>";
@@ -171,6 +172,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<td>" . $row['region'] . "</td>";
                                         echo "<td>" . $row['country'] . "</td>";
                                         echo "<td>" . $row['potentialinvestment'] . "</td>";
+                                        echo "<td>" . $row['preference'] . "</td>";
                                         echo "<td>" . $row['tag'] . "</td>";
                                         echo "<td>";
                                             
@@ -197,16 +199,10 @@ if (!isset($_SESSION['loggedin'])) {
                      </div>        
                  </div>
               </div>
+              
         </section>
 
-        
-
     </main>
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="./main.js"></script> -->
-
 </body>
 </htmI>
 
@@ -223,12 +219,12 @@ body{
    }
 
  table{
-    position: absolute;
-    left: 45%;
+    /* position: absolute;
+    left: 48%;
     top: 51%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
     border-collapse: collapse;
-    width: 60%;
+    width: 65%;
     height: 300px;
     border: 1px solid #bdc3c7;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 

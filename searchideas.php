@@ -15,6 +15,7 @@ if (!isset($_SESSION['loggedin'])) {
     <title>Search Results</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
       rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -93,6 +94,10 @@ if (!isset($_SESSION['loggedin'])) {
             <div class="recent-transactions">
                 <div class="header">
                     <h2> <span class="material-symbols-sharp">person_search</span> Searched Results</h2>
+                </div>
+                <div>
+                 <a href="idea.php" class="button"> 
+                 <i class="fa fa-chevron-left"></i> Back</a>
                 </div>
                 
                 <div class="wrapper">
@@ -186,13 +191,13 @@ body{
    }
 
  table{
-    position: absolute;
+    /* position: absolute;
     left: 45%;
     top: 40%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
     border-collapse: collapse;
-    width: 60%;
-    /* height: 300px; */
+    /* width: 60%;
+    height: 300px;  */
     border: 1px solid #bdc3c7;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
     background-color: #f5f5f5;
@@ -222,4 +227,20 @@ body{
     transform: scale(1.02);
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
   }
+  .button {
+        background-color: #6d5c97;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 8px 14px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 0px;
+        cursor: pointer;
+      }
+      .button:hover{
+        background-color: #7360a2;
+      }
 </style>

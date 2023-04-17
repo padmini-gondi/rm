@@ -105,13 +105,13 @@ if (!isset($_SESSION['loggedin'])) {
                                     echo "<tr>";
                                         // echo "<th>ID</th>";
                                         echo "<th>Title</th>";
-                                        echo "<th>Risk Rating</th>";
+                                        // echo "<th>Risk Rating</th>";
                                         echo "<th>Product Type</th>";
-                                        echo "<th>Instrument</th>";
-                                        echo "<th>Sector</th>";
-                                        echo "<th>Region</th>";
-                                        echo "<th>Country</th>";
-                                        echo "<th>Currency</th>";
+                                        // echo "<th>Instrument</th>";
+                                        // echo "<th>Sector</th>";
+                                        // echo "<th>Region</th>";
+                                        // echo "<th>Country</th>";
+                                        // echo "<th>Currency</th>";
                                         echo "<th>Description</th>";
                                         echo "<th>Update</th>";
                                     echo "</tr>";
@@ -121,18 +121,16 @@ if (!isset($_SESSION['loggedin'])) {
                                     echo "<tr>";
                                         // echo "<td>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['name'] . "</td>";
-                                        echo "<td>" . $row['riskrating'] . "</td>";
+                                        // echo "<td>" . $row['riskrating'] . "</td>";
                                         echo "<td>" . $row['producttype'] . "</td>";
-                                        echo "<td>" . $row['instrument'] . "</td>";
-                                        echo "<td>" . $row['sector'] . "</td>";
-                                        echo "<td>" . $row['region'] . "</td>";
-                                        echo "<td>" . $row['country'] . "</td>";
-                                        echo "<td>" . $row['currency'] . "</td>";
+                                            // echo "<td>" . $row['instrument'] . "</td>";
+                                            // echo "<td>" . $row['sector'] . "</td>";
+                                            // echo "<td>" . $row['region'] . "</td>";
+                                            // echo "<td>" . $row['country'] . "</td>";
+                                            // echo "<td>" . $row['currency'] . "</td>";
                                         echo "<td>" . $row['content'] . "</td>";
                                         echo "<td>";
-                                            
-                                            echo '<a href="updateinvestment.php?id='. $row['id'] .'"><span class="material-symbols-sharp">edit</span></a>';
-                                            
+                                         echo '<a href="updateinvestment.php?id='. $row['id'] .'"><span class="material-symbols-sharp">edit</span></a>';
                                         echo "</td>";
                                     echo "</tr>";
                                 }
@@ -214,6 +212,18 @@ if (!isset($_SESSION['loggedin'])) {
                 </div>
 
             </div>
+            <div style="padding: 10px;"; height: 10px;></div>
+            <div>
+             <div class="header">
+                 <a href="bondideas.php" class="button">
+                 <i class="fa fa-plus"></i> Bonds Ideas</a>   
+                 <a href="mfideas.php" class="button">
+                 <i class="fa fa-chevron-left"></i> Mutual Fund Ideas</a>
+                 <div style="padding: 10px;"; width: 10px;></div> 
+                 <a href="sharesideas.php" class="button">
+                 <i class="fa fa-chevron-left"></i> Shares Ideas</a>
+               </div>
+         </div>
         </section>
 
     </main>
@@ -232,13 +242,13 @@ if (!isset($_SESSION['loggedin'])) {
     }
 
   table{
-     position: absolute;
+     /* position: absolute;
      left: 45%;
-     top: 60%;
-     transform: translate(-50%, -50%);
+     top: 43%;
+     transform: translate(-50%, -50%); */
      border-collapse: collapse;
-     width: 55%;
-     height: 300px;
+     /* width: 58%;
+     height: 300px; */
      border: 1px solid #bdc3c7;
      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
      background-color: #f5f5f5;
@@ -269,5 +279,21 @@ if (!isset($_SESSION['loggedin'])) {
      transform: scale(1.02);
      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
    }
+   .button {
+        background-color: #6d5c97;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 8px 14px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 0px;
+        cursor: pointer;
+      }
+      .button:hover{
+        background-color: #7360a2;
+      }
 
 </style>

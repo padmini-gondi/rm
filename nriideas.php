@@ -12,10 +12,11 @@ if (!isset($_SESSION['loggedin'])) {
 <htmI lang="en">
 <head> 
     <meta charset= "UTF-8">
-    <title>Search Results</title>
+    <title>Fixed Deposit Ideas</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Add icon library -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
       rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -93,10 +94,12 @@ if (!isset($_SESSION['loggedin'])) {
             <br>
             <div class="recent-transactions">
                 <div class="header">
-                    <h2> <span class="material-symbols-sharp">person_search</span> Searched Results</h2>
+                    <h2> <span class="material-symbols-sharp"></span> NRI Services Ideas</h2>
                 </div>
-                <a href="approvedideas.php" class="button"> 
-                <i class="fa fa-chevron-left"></i> Back</a>
+                <div class="header">
+                 <a href="services.php" class="button"> 
+                 <i class="fa fa-chevron-left"></i> Back</a> 
+                </div>
                 
                 <div class="wrapper">
                   <div class="container-fluid">
@@ -106,11 +109,11 @@ if (!isset($_SESSION['loggedin'])) {
                              // Include config file
                              require_once "config.php";
 
-                             $search = $_POST['search'];
-                             $column = $_POST['column'];
+                            //  $search = $_POST['search'];
+                            //  $column = $_POST['column'];
                     
                              // Attempt select query execution
-                             $sql = "select * from approvedideas where $column like '%$search%'";
+                             $sql = "select * from approvedideas where tag = 'NRI'";
                             //  execute sql and store result
                              if($result = $mysqli->query($sql)){
                              if($result->num_rows > 0){
@@ -127,8 +130,7 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<th>Currency</th>";
                                         echo "<th>Description</th>";
                                         echo "<th>Tag</th>";
-                                        echo "<th>Recommend</th>";
-                                        echo "<th>Update Idea</th>";
+                                        echo "<th>Action</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -146,9 +148,6 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<td>" . $row['tag'] . "</td>";
                                         echo "<td>";
                                             echo '<a href="notification/index.php"><span class="material-symbols-sharp">recommend</span></a>';
-                                        echo "</td>";
-                                        echo "<td>";
-                                         echo '<a href="updateidea.php?id='. $row['id'] .'"><span class="material-symbols-sharp">edit</span></a>';
                                         echo "</td>";
                                     echo "</tr>";
                                 }
@@ -195,12 +194,12 @@ body{
 
  table{
     /* position: absolute;
-    left: 48%;
+    left: 45%;
     top: 38%;
-    transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%); */ 
     border-collapse: collapse;
-    /* width: 60%;
-    height: 300px; */
+    width: 60%;
+    height: 300px;
     border: 1px solid #bdc3c7;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
     background-color: #f5f5f5;

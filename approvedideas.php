@@ -15,6 +15,9 @@ if (!isset($_SESSION['loggedin'])) {
     <title>Approved Ideas</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Add icon library -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
       rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -103,10 +106,10 @@ if (!isset($_SESSION['loggedin'])) {
                     <option value="region">Region</option>
                     <option value="country">Country</option>
                     <option value="currency">Currency</option>
+                    <option value="tag">Tag</option>
                     </select><br>
-                    <input type ="submit">    
+                    <input type ="submit">  
                 </form>
-
                 <br>
 
             <div class="Investments">
@@ -134,7 +137,9 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<th>Country</th>";
                                         echo "<th>Currency</th>";
                                         echo "<th>Description</th>";
-                                        echo "<th>Action</th>";
+                                        echo "<th>Tag</th>";
+                                        echo "<th>Recommend</th>";
+                                        echo "<th>Update Tag</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -149,10 +154,13 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<td>" . $row['country'] . "</td>";
                                         echo "<td>" . $row['currency'] . "</td>";
                                         echo "<td>" . $row['content'] . "</td>";
+                                        echo "<td>" . $row['tag'] . "</td>";
                                         echo "<td>";
                                             echo '<a href="notification/index.php"><span class="material-symbols-sharp">recommend</span></a>';
                                         echo "</td>";
-                                        
+                                        echo "<td>";
+                                         echo '<a href="updatetag.php?id='. $row['id'] .'"><span class="material-symbols-sharp">edit</span></a>';
+                                        echo "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            
@@ -170,106 +178,30 @@ if (!isset($_SESSION['loggedin'])) {
                               $mysqli->close();
                  
                 ?>
-
-                
-               <!-- <h2> <span class="material-symbols-sharp">monitoring</span> Shares</h2>
-                <br>
-                <li>Invest in company stocks with potential for high returns. You can earn returns on your investment in two ways: through the appreciation of the stock price, which they can sell for a profit, and through dividend payments, which are a portion of the company's profits paid out to shareholders. Shares can be traded on stock exchanges or investment funds. This is an opportunity for capital appreciation and can be a valuable addition to a diversified investment portfolio.</li>
-                <br>
-                <li>Title: Shares</li>
-                <li> Risk rating: 5 Suitable for very aggressive investors </li>
-                <li> Product type: Shares</li>
-                <li> Instruments: IBM, AWS, SAP, Oracle, Infosys, Government </li>
-                <li> Major Sector: Finance </li>
-                <li> Minor Sector: Finance, Health Care, IT Sector, Pharmaceutical </li>
-                <li> Region: Asia, America, Europe </li>
-                <li> Country: India, USA, Uk</li>
-                <li> Currency: INR, USD, GBP</li>
-
-                <ul style="list-style-type: circle">
-                    <li>Contents:</li>
-                    <li>High risk</li>
-                    <li>High returns</li>
-                    <li>Minimum investment: $500</li>
-                </ul> -->
            </div>
 
         </section>
-
         <section class="right">
-           <div class="investments">
+           <div>
                 <div class="header">
-                    <h2>Investments</h2>
-                    <a href="./investments.php">More <span class="material-symbols-sharp">chevron_right</span></a>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">savings</span>
-                    <!-- <img src="./images/uniliver.png"> -->
-                    <h4>Mutual Funds</h4>
-                    <div>
-                        <p>Invest your funds today for a better tomorrow</p>
-                    </div>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">document_scanner</span>
-                    <!-- <img src="./images/tesla.png"> -->
-                    <h4>Bonds</h4>
-                    <div>
-                        <p>Invest in govt/corp with fixed rate of return</p>
-                    </div>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">monitoring</span>
-                    <!-- <img src="./images/monster.png"> -->
-                    <h4>Shares</h4>
-                    <div>
-                        <p>Invest in stocks with potential for high returns</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div style="padding: 10px;"; height: 10px;></div>
-
-            <div class="investments">
-                <div class="header">
-                    <h2>Services</h2>
-                    <a href="./services.php">More <span class="material-symbols-sharp">chevron_right</span></a>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">handshake</span>
-                    <!-- <img src="./images/uniliver.png"> -->
-                    <h4>Health Insurance</h4>
-                    <div>
-                        <p>Protect yourself and your loved ones!!!</p>
-                    </div>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">request_quote</span>
-                    <!-- <img src="./images/tesla.png"> -->
-                    <h4>Fixed Deposits</h4>
-                    <div>
-                        <p>Earn a fixed rate of interest with your deposits</p>
-                    </div>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">verified_user</span>
-                    <!-- <img src="./images/monster.png"> -->
-                    <h4>NRI Services</h4>
-                    <div>
-                        <p>Get personalized services to manage your finances and investments.</p>
-                    </div>
-                </div>
-
-            </div>
+                 <a href="investments.php" class="button">
+                 <i class="fa fa-chevron-left"></i> Investments</a>
+                  <!-- <div style="padding: 10px;"; width: 10px;></div> 
+                 <a href="services.php" class="button">
+                 <i class="fa fa-chevron-left"></i> Services</a>
+                 <a href="./notification/index.php" class="button">
+                 <i class="fa fa-thumbs-o-up"></i> Recommend</a> -->
+               </div>
+               <div>
+                 <a href="services.php" class="button">
+                 <i class="fa fa-chevron-left"></i> Services</a>
+               </div>
+               <div>
+                 <a href="./notification/index.php" class="button">
+                 <i class="fa fa-thumbs-o-up"></i> Recommend</a>
+               </div>
+            </div> 
         </section>
-
     </main>
 </body>
 </htmI>
@@ -286,13 +218,13 @@ if (!isset($_SESSION['loggedin'])) {
     }
 
   table{
-     position: absolute;
-     left: 45%;
-     top: 77%;
-     transform: translate(-50%, -50%);
+     /* position: absolute;
+     left: 53%;
+     top: 65%;
+     transform: translate(-50%, -50%); */
      border-collapse: collapse;
-     width: 53%;
-     height: 300px;
+     /* width: 73%;
+     height: 300px; */
      border: 1px solid #bdc3c7;
      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
      background-color: #f5f5f5;
@@ -367,5 +299,22 @@ if (!isset($_SESSION['loggedin'])) {
  .form-inline input, select {
   margin: 5px 10px 5px 5px;
  }
+
+ .button {
+        background-color: #6d5c97;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 8px 14px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 0px;
+        cursor: pointer;
+      }
+      .button:hover{
+        background-color: #7360a2;
+      }
 
 </style>

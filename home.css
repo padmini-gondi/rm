@@ -303,14 +303,14 @@ main section.right .investments .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--card-padding);
+    padding: 1.2rem;
     padding-bottom: 0;
 }
 
 main section.right .investments .header a {
     display: flex;
     align-items: center;
-    color: #6d5c97;
+    color: var(--color-primary);
 }
 
 main section.right .investments .investment {

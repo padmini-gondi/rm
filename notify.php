@@ -5,6 +5,26 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    input[type=submit] {
+  background-color: #45a049;
+  color: white;
+  margin: 4px 0;
+  padding: 9px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+ } 
+
+ input[type=submit]:hover {
+  background-color: #4CAF50;
+ }
+ th{
+     background-color: #6d5c97;
+     color: #fff;
+     border-bottom: 1px solid #ddd;
+   }
+ </style>
  </head>
  <body>
   <br /><br />
@@ -29,7 +49,7 @@
      <input type="text" name="subject" id="subject" class="form-control" autofocus required>
     </div>
     <div class="form-group">
-     <input type="submit" name="post" id="post" class="btn btn-info" value="Search" />
+     <input type="submit" name="post" id="post"  value="Search" />
     </div>
    </form>
    

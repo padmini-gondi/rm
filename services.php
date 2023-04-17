@@ -7,7 +7,6 @@ if (!isset($_SESSION['loggedin'])) {
 	exit;
 }
 ?>
-
 <!DOCTYPE html> 
 <htmI lang="en">
 <head> 
@@ -89,7 +88,7 @@ if (!isset($_SESSION['loggedin'])) {
             </div> -->
             <br>
 
-            <div class="Services">
+            <div class="Investments">
                 <h1>Services</h1>
                 <br>
 
@@ -177,9 +176,19 @@ if (!isset($_SESSION['loggedin'])) {
                         <p>Invest in stocks with potential for high returns</p>
                     </div>
                 </div>
-
             </div>
-            <!-- <div style="padding: 10px;"; height: 10px;></div> -->
+            <div style="padding: 10px;"; height: 10px;></div>
+            <div>
+             <div class="header">
+                 <a href="fdideas.php" class="button">
+                 <i class="fa fa-plus"></i> FD Ideas</a>   
+                 <a href="hiideas.php" class="button">
+                 <i class="fa fa-chevron-left"></i> Health Insurance Ideas</a>
+                 <div style="padding: 10px;"; width: 10px;></div> 
+                 <a href="nriideas.php" class="button">
+                 <i class="fa fa-chevron-left"></i> NRI Services Ideas</a>
+               </div>
+         </div>
         </section>
 
     </main>
@@ -198,13 +207,13 @@ if (!isset($_SESSION['loggedin'])) {
     }
 
   table{
-     position: absolute;
+     /* position: absolute;
      left: 45%;
-     top: 44%;
-     transform: translate(-50%, -50%);
+     top: 44%; 
+     transform: translate(-50%, -50%);*/
      border-collapse: collapse;
-     width: 58%;
-     height: 300px;
+     /* width: 58%;
+     height: 300px; */
      border: 1px solid #bdc3c7;
      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
      background-color: #f5f5f5;
@@ -235,5 +244,21 @@ if (!isset($_SESSION['loggedin'])) {
      transform: scale(1.02);
      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 
    }
+   .button {
+        background-color: #6d5c97;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 8px 14px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 0px;
+        cursor: pointer;
+      }
+      .button:hover{
+        background-color: #7360a2;
+      }
 
 </style>

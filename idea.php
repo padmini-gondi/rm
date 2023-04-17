@@ -113,9 +113,8 @@ if (!isset($_SESSION['loggedin'])) {
             <div class="Investments">
 
                 <!-- <h3> <a href="./newidea.php">Add a New Idea</a></h3> -->
-                <a href="newidea.php" class="button">
-                <i class="fa fa-plus"></i> Add a New Idea</a>
-                <br>
+                <!-- <a href="newidea.php" class="button"> -->
+                <!-- <i class="fa fa-plus"></i> Add a New Idea</a> -->
                 <h1>New Ideas</h1>
                 <br>
                 <?php
@@ -138,7 +137,8 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<th>Country</th>";
                                         echo "<th>Currency</th>";
                                         echo "<th>Description</th>";
-                                        echo "<th>Action</th>";
+                                        echo "<th>Approve Idea</th>";
+                                        echo "<th>Deny Idea</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -154,10 +154,10 @@ if (!isset($_SESSION['loggedin'])) {
                                         echo "<td>" . $row['currency'] . "</td>";
                                         echo "<td>" . $row['content'] . "</td>";
                                         echo "<td>";
-                                            
                                             echo '<a href="approveidea.php?id='. $row['id'] .'"><span class="material-symbols-sharp">check_circle</span></a>';
-                                            echo '<a href="denyidea.php?id='. $row['id'] .'"><span class="material-symbols-sharp">cancel</span></a>';
-                                            
+                                        echo "</td>";
+                                        echo "<td>";
+                                            echo '<a href="denyidea.php?id='. $row['id'] .'"><span class="material-symbols-sharp">cancel</span></a>'; 
                                         echo "</td>";
                                     echo "</tr>";
                                 }
@@ -176,106 +176,37 @@ if (!isset($_SESSION['loggedin'])) {
                               $mysqli->close();
                  
                 ?>
-
-                
-               <!-- <h2> <span class="material-symbols-sharp">monitoring</span> Shares</h2>
-                <br>
-                <li>Invest in company stocks with potential for high returns. You can earn returns on your investment in two ways: through the appreciation of the stock price, which they can sell for a profit, and through dividend payments, which are a portion of the company's profits paid out to shareholders. Shares can be traded on stock exchanges or investment funds. This is an opportunity for capital appreciation and can be a valuable addition to a diversified investment portfolio.</li>
-                <br>
-                <li>Title: Shares</li>
-                <li> Risk rating: 5 Suitable for very aggressive investors </li>
-                <li> Product type: Shares</li>
-                <li> Instruments: IBM, AWS, SAP, Oracle, Infosys, Government </li>
-                <li> Major Sector: Finance </li>
-                <li> Minor Sector: Finance, Health Care, IT Sector, Pharmaceutical </li>
-                <li> Region: Asia, America, Europe </li>
-                <li> Country: India, USA, Uk</li>
-                <li> Currency: INR, USD, GBP</li>
-
-                <ul style="list-style-type: circle">
-                    <li>Contents:</li>
-                    <li>High risk</li>
-                    <li>High returns</li>
-                    <li>Minimum investment: $500</li>
-                </ul> -->
            </div>
 
         </section>
 
         <section class="right">
-           <div class="investments">
+           <div>
                 <div class="header">
-                    <h2>Investments</h2>
-                    <a href="./investments.php">More <span class="material-symbols-sharp">chevron_right</span></a>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">savings</span>
-                    <!-- <img src="./images/uniliver.png"> -->
-                    <h4>Mutual Funds</h4>
-                    <div>
-                        <p>Invest your funds today for a better tomorrow</p>
-                    </div>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">document_scanner</span>
-                    <!-- <img src="./images/tesla.png"> -->
-                    <h4>Bonds</h4>
-                    <div>
-                        <p>Invest in govt/corp with fixed rate of return</p>
-                    </div>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">monitoring</span>
-                    <!-- <img src="./images/monster.png"> -->
-                    <h4>Shares</h4>
-                    <div>
-                        <p>Invest in stocks with potential for high returns</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div style="padding: 10px;"; height: 10px;></div>
-
-            <div class="investments">
-                <div class="header">
-                    <h2>Services</h2>
-                    <a href="./services.php">More <span class="material-symbols-sharp">chevron_right</span></a>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">handshake</span>
-                    <!-- <img src="./images/uniliver.png"> -->
-                    <h4>Health Insurance</h4>
-                    <div>
-                        <p>Protect yourself and your loved ones!!!</p>
-                    </div>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">request_quote</span>
-                    <!-- <img src="./images/tesla.png"> -->
-                    <h4>Fixed Deposits</h4>
-                    <div>
-                        <p>Earn a fixed rate of interest with your deposits</p>
-                    </div>
-                </div>
-
-                <div class="investment">
-                    <span class="material-symbols-sharp">verified_user</span>
-                    <!-- <img src="./images/monster.png"> -->
-                    <h4>NRI Services</h4>
-                    <div>
-                        <p>Get personalized services to manage your finances and investments.</p>
-                    </div>
-                </div>
-
+                 <a href="newidea.php" class="button">
+                 <i class="fa fa-plus"></i> Add a New Idea</a>   
+                 <!-- <a href="investments.php" class="button">
+                 <i class="fa fa-chevron-left"></i> Investments</a>
+                 <div style="padding: 10px;"; width: 10px;></div> 
+                 <a href="services.php" class="button">
+                 <i class="fa fa-chevron-left"></i> Services</a>
+                 <a href="./notification/index.php" class="button">
+                 <i class="fa fa-thumbs-o-up"></i> Recommend</a> -->
+               </div>
+               <!-- <div>
+                 <a href="investments.php" class="button">
+                 <i class="fa fa-chevron-left"></i> Investments</a>
+               </div>
+               <div>
+                 <a href="services.php" class="button">
+                 <i class="fa fa-chevron-left"></i> Services</a>
+               </div>
+               <div> -->
+                 <a href="./notification/index.php" class="button">
+                 <i class="fa fa-thumbs-o-up"></i> Recommend</a>
+               </div>
             </div>
         </section>
-
     </main>
 </body>
 </htmI>
@@ -292,13 +223,13 @@ if (!isset($_SESSION['loggedin'])) {
     }
 
   table{
-     position: absolute;
-     left: 45%;
-     top: 87%;
-     transform: translate(-50%, -50%);
+     /* position: absolute;
+     left: 51%;
+     top: 68%;
+     transform: translate(-50%, -50%); */
      border-collapse: collapse;
-     width: 58%;
-     height: auto;
+     /* width: 70%;
+     height: auto; */
      padding: 10px;
      border: 1px solid #bdc3c7;
      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px, -1px, 8px rgba(0, 0, 0, 0.2); 

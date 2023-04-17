@@ -1,38 +1,37 @@
 <?php
-
+// We need to use sessions, so you should always start sessions using the below code.
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
 	header('Location: login.php');
 	exit;
 }
-
-// Include config file
+// Include config filed
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $productname = $producttype = $instrument = $sector = $region = $country = $potentialinvestment = $preference = $tag = "";
-$name_err = $productname_err = $productype_err = $instrument_err = $sector_err = $region_err = $country_err = $potentialinvestment_err = $preference_err = $tag_err = "";
+$title = $riskrating = $producttype = $instrument = $sector = $region = $country = $currency = $content = $tag = "";
+$title_err = $riskrating_err = $producttype_err = $instrument_err = $sector_err = $region_err = $country_err = $currency_err = $content_err = $tag_err = "";
  
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Get hidden input value
     $id = $_POST["id"];
     
-    // Validate name
-    $input_name = trim($_POST["name"]);
-    if(empty($input_name)){
-        $name_err = "Please enter a name.";
+    // Validate title
+    $input_title = trim($_POST["title"]);
+    if(empty($input_title)){
+        $title_err = "Please enter a title.";
     } else{
-        $name = $input_name;
+        $title = $input_title;
     }
 
-    // Validate product name
-    $input_productname = trim($_POST["productname"]);
-    if(empty($input_productname)){
-        $productname_err = "Please enter an product name.";     
+    // Validate riskrating
+    $input_riskrating = trim($_POST["riskrating"]);
+    if(empty($input_riskrating)){
+        $riskrating_err = "Please enter a risk rating.";
     } else{
-        $productname = $input_productname;
+        $riskrating = $input_riskrating;
     }
     
     // Validate product type
@@ -62,7 +61,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Validate region
     $input_region = trim($_POST["region"]);
     if(empty($input_region)){
-        $region_err = "Please enter the region.";     
+        $region_err = "Please enter an region.";     
     } else{
         $region = $input_region;
     }
@@ -75,56 +74,56 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $country = $input_country;
     }
 
-    // Validate potentialinvestment
-    $input_potentialinvestment = trim($_POST["potentialinvestment"]);
-    if(empty($input_potentialinvestment)){
-        $potentialinvestments_err = "Please enter the potentialinvestment.";     
+    // Validate currency
+    $input_currency = trim($_POST["currency"]);
+    if(empty($input_currency)){
+        $currency_err = "Please enter the currency.";     
     } else{
-        $potentialinvestment = $input_potentialinvestment;
+        $currency = $input_currency;
     }
 
-    // Validate preference
-    $input_preference = trim($_POST["preference"]);
-    if(empty($input_preference)){
-        $preference_err = "Please enter the investment preference.";     
+    // Validate content
+    $input_content = trim($_POST["content"]);
+    if(empty($input_content)){
+        $content_err = "Please enter an content.";     
     } else{
-        $preference = $input_preference;
+        $content = $input_content;
     }
 
     // Validate tag
     $input_tag = trim($_POST["tag"]);
     if(empty($input_tag)){
-        $tag_err = "Please enter the tag.";     
+        $tag_err = "Please enter a tag.";
     } else{
         $tag = $input_tag;
     }
     
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($productname_err) && empty($producttype_err) && empty($instrument_err) && empty($sector_err) && empty($region_err) && empty($country_err) && empty($potentialinvestment_err) && empty($preference_err) && empty($tag_err)){
+    if(empty($title_err) && empty($riskrating_err) && empty($producttype_err) && empty($instrument_err) && empty($sector_err) && empty($region_err) && empty($country_err) && empty($currency_err) && empty($content_err) && empty($tag_err)){
         // Prepare an update statement
-        $sql = "UPDATE clients SET name=?, productname=?, producttype=?, instrument=?, sector=?, region=?, country=?, potentialinvestment=?, preference=?, tag=? WHERE id=?";
+        $sql = "UPDATE approvedideas SET title=?, riskrating=?, producttype=?, instrument=?, sector=?, region=?, country=?, currency=?, content=?, tag =? WHERE id=?";
  
         if($stmt = $mysqli->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("ssssssssssi", $name, $productname, $producttype, $instrument, $sector, $region, $country, $potentialinvestment, $preference, $tag, $id);
+            $stmt->bind_param("ssssssssssi", $title, $riskrating, $producttype, $instrument, $sector, $region, $country, $currency, $content, $tag, $id);
             
             // Set parameters
-            $name = $name;
-            $productname = $productname;
+            $title = $title;
+            $riskrating = $riskrating;
             $producttype = $producttype;
             $instrument = $instrument;
             $sector = $sector;
             $region = $region;
             $country = $country;
-            $potentialinvestment = $potentialinvestment;
-            $preference = $preference;
+            $currency = $currency;
+            $content = $content;
             $tag = $tag;
             $id = $id;
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Records updated successfully. Redirect to landing page
-                header("location: home.php");
+                header("location: approvedideas.php");
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -144,7 +143,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $id =  trim($_GET["id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM clients WHERE id = ?";
+        $sql = "SELECT * FROM approvedideas WHERE id = ?";
         if($stmt = $mysqli->prepare($sql)){
             // Bind variables to the prepared statement as parameters
             $stmt->bind_param("i", $param_id);
@@ -162,15 +161,15 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $row = $result->fetch_array(MYSQLI_ASSOC);
                     
                     // Retrieve individual field value
-                    $name = $row["name"];
-                    $productname = $row["productname"];
-                    $producttype = $row["producttype"];
-                    $instrument = $row["instrument"];
-                    $sector = $row["sector"];
-                    $region = $row["region"];
+                    $title = $row["title"];
+                    $riskrating = $row["riskrating"];
+                    $producttype = $row["producttype"]; 
+                    $instrument = $row["instrument"]; 
+                    $sector = $row["sector"]; 
+                    $region = $row["region"];   
                     $country = $row["country"];
-                    $potentialinvestment = $row["potentialinvestment"];
-                    $preference = $row["preference"];
+                    $currency = $row["currency"];
+                    $content = $row["content"];
                     $tag = $row["tag"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
@@ -200,7 +199,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update Record</title>
+    <title>Update Investment</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .wrapper{
@@ -227,18 +226,18 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5">Update Client</h2>
-                    <p>Please edit the input values and submit to update the clients record.</p>
+                    <h2 class="mt-5">Update Idea</h2>
+                    <p>Please edit the input values and submit to update the idea.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
-                            <span class="invalid-feedback"><?php echo $name_err;?></span>
+                            <label>Title</label>
+                            <input type="text" name="title" class="form-control <?php echo (!empty($title_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $title; ?>">
+                            <span class="invalid-feedback"><?php echo $title_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Product Name</label>
-                            <textarea name="productname" class="form-control <?php echo (!empty($productname_err)) ? 'is-invalid' : ''; ?>"><?php echo $productname; ?></textarea>
-                            <span class="invalid-feedback"><?php echo $productname_err;?></span>
+                            <label>Risk Rating</label>
+                            <input type="text" name="riskrating" class="form-control <?php echo (!empty($riskrating_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $riskrating; ?>">
+                            <span class="invalid-feedback"><?php echo $riskrating_err;?></span>
                         </div>
                         <div class="form-group">
                             <label>Product Type</label>
@@ -247,17 +246,17 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         </div>
                         <div class="form-group">
                             <label>Instrument</label>
-                            <textarea name="instrument" class="form-control <?php echo (!empty($instrument_err)) ? 'is-invalid' : ''; ?>"><?php echo $instrument; ?></textarea>
+                            <input type="text" name="instrument" class="form-control <?php echo (!empty($instrument_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $instrument; ?>">
                             <span class="invalid-feedback"><?php echo $instrument_err;?></span>
                         </div>
                         <div class="form-group">
                             <label>Sector</label>
-                            <textarea name="sector" class="form-control <?php echo (!empty($sector_err)) ? 'is-invalid' : ''; ?>"><?php echo $sector; ?></textarea>
+                            <input type="text" name="sector" class="form-control <?php echo (!empty($sector_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $sector; ?>">
                             <span class="invalid-feedback"><?php echo $sector_err;?></span>
                         </div>
                         <div class="form-group">
                             <label>Region</label>
-                            <textarea name="region" class="form-control <?php echo (!empty($region_err)) ? 'is-invalid' : ''; ?>"><?php echo $region; ?></textarea>
+                            <input type="text" name="region" class="form-control <?php echo (!empty($region_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $region; ?>">
                             <span class="invalid-feedback"><?php echo $region_err;?></span>
                         </div>
                         <div class="form-group">
@@ -266,23 +265,23 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="invalid-feedback"><?php echo $country_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Potential Investment</label>
-                            <input type="text" name="potentialinvestment" class="form-control <?php echo (!empty($potentialinvestment_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $potentialinvestment; ?>">
-                            <span class="invalid-feedback"><?php echo $potentialinvestment_err;?></span>
+                            <label>Currency</label>
+                            <input type="text" name="currency" class="form-control <?php echo (!empty($currency_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $currency; ?>">
+                            <span class="invalid-feedback"><?php echo $currency_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Investment Preference</label>
-                            <input type="text" name="preference" class="form-control <?php echo (!empty($preference_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $preference; ?>">
-                            <span class="invalid-feedback"><?php echo $preference_err;?></span>
+                            <label>Description</label>
+                            <input type="text" name="content" class="form-control <?php echo (!empty($content_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $content; ?>">
+                            <span class="invalid-feedback"><?php echo $content_err;?></span>
                         </div>
                         <div class="form-group">
                             <label>Tag</label>
-                            <textarea name="tag" class="form-control <?php echo (!empty($tag_err)) ? 'is-invalid' : ''; ?>"><?php echo $tag; ?></textarea>
+                            <input type="text" name="tag" class="form-control <?php echo (!empty($tag_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $tag; ?>">
                             <span class="invalid-feedback"><?php echo $tag_err;?></span>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Update">
-                        <a href="home.php" class="btn btn-secondary ml-2">Cancel</a>
+                        <a href="approvedideas.php" class="btn btn-secondary ml-2">Cancel</a>
                     </form>
                 </div>
             </div>        
